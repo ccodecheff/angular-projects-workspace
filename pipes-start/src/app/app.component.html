@@ -1,0 +1,35 @@
+<div class="container">
+  
+      <div class="row">
+        <div class="col-xs-2">
+           <button class="btn btn-success" type="button" (click)="addServer()"> Add Server
+           </button>
+          </div>
+          <br>
+      <label for="Filter">Enter Status Filter</label> &nbsp;
+      <input type="text" [(ngModel)]="filterstatus">  &nbsp;
+      <button type="button" class="btn btn-primary" (click)="onReverse()">Reverse Name</button>
+      &nbsp;
+      <button type="button" class="btn btn-primary" (click)="onSort()">Sort Name</button>
+    
+      <hr>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let server of servers |filter:filterstatus:'status' |sort:sortstatus:'name'"
+          [ngClass]="getStatusClasses(server)">
+          <span
+            class="badge">
+            {{ server.status }}
+          </span>
+          <strong>{{ server.name| reverse:reversestatus  }}..</strong> |
+           {{ server.instanceType| uppercase }} |
+            {{ server.started |date:'fullDate' | uppercase }}
+        </li>
+      </ul>
+    </div>
+    
+  </div>
+
+ 
+
