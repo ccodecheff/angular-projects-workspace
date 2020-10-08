@@ -10,7 +10,6 @@ import { UserService } from '../services/userservice';
 export class ActiveUsersComponent implements OnInit {
   users: string[];
   inactivecount:number;
-  // @Output() userSetToInactive = new EventEmitter<number>();
   constructor(private userservice: UserService){
     this.inactivecount =this.userservice.inactivecount;
     console.log("Inactive count:"+this.inactivecount); 
@@ -21,7 +20,6 @@ export class ActiveUsersComponent implements OnInit {
   }
 
   onSetToInactive(id: number) {
-    //this.userSetToInactive.emit(id);
     this.userservice.onSetToInactive(id);
     this.inactivecount =this.userservice.inactivecount;
     console.log("Inactive count:"+this.inactivecount); 
